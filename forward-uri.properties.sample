@@ -1,0 +1,9 @@
+---
+# base_url examples:
+#    cloud: app.forwardnetworks.com
+#    on-prem: dev-vm-5:8443
+base_url: <Forward URL>
+username: <Forward username>
+password: <Forward password>
+network_id: <network-id>
+snapshotId: <snapshot-id>
