@@ -8,7 +8,7 @@
   tasks:
     - name: get Path
       uri:
-        url: https://{{base_url}}/snapshots/{{snapshotId_paths}}/paths?srcIp={{srcIp}}&dstIp={{dstIp}}&intent=SINGLE_BEST&includeNetworkFunctions=false&maxResults=1&maxReturnPathResults=0&maxSeconds=30
+        url: https://{{base_url}}/snapshots/{{snapshotId}}/paths?srcIp={{srcIp}}&dstIp={{dstIp}}&intent=SINGLE_BEST&includeNetworkFunctions=false&maxResults=1&maxReturnPathResults=0&maxSeconds=30
         method: GET
         force_basic_auth: yes
         user: "{{ username }}"
@@ -16,9 +16,3 @@
         body_format: json
         return_content: yes
       register: networks_output
-
-    - name: Print first Network on the list
-      debug:
-        msg:
-          - "Status: {{ networks_output.status }}"
-          - "URL: {{ networks_output.url }}"
