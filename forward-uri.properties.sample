@@ -7,3 +7,5 @@ username: <Forward username>
 password: <Forward password>
 network_id: <network-id>
 snapshotId: <snapshot-id>
+srcIp: <source-ip>
+dstIp: <destination-ip>

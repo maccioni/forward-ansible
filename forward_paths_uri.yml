@@ -1,0 +1,24 @@
+- name: Forward Networks integration demo via Ansible UIR module and Forward APIs
+  hosts: localhost
+  vars_files:
+    - uri.properties.yml
+  vars:
+    expected_check_status: PASS  # Default status for the test (after change)
+
+  tasks:
+    - name: get Path
+      uri:
+        url: https://{{base_url}}/snapshots/{{snapshotId_paths}}/paths?srcIp={{srcIp}}&dstIp={{dstIp}}&intent=SINGLE_BEST&includeNetworkFunctions=false&maxResults=1&maxReturnPathResults=0&maxSeconds=30
+        method: GET
+        force_basic_auth: yes
+        user: "{{ username }}"
+        password: "{{ password }}"
+        body_format: json
+        return_content: yes
+      register: networks_output
+
+    - name: Print first Network on the list
+      debug:
+        msg:
+          - "Status: {{ networks_output.status }}"
+          - "URL: {{ networks_output.url }}"
